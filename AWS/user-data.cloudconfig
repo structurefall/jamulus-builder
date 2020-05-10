@@ -10,5 +10,4 @@ packages:
 runcmd:
  - [ git, clone, "https://github.com/corrados/jamulus.git" ]
  - [ sh, -c, "cd jamulus; qmake \"CONFIG+=nosound\" Jamulus.pro && make clean && make"]
- - [ sudo, useradd, jamulus ]
- - [ sudo, -u, jamulus, /jamulus/Jamulus, -s, -n ]
+ - [ sudo, jamulus, chrt, 99, ionice, -c1, nice, -n, -20, /jamulus/Jamulus, -s, -n ]
