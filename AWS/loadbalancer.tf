@@ -1,5 +1,5 @@
 resource "aws_lb" "jamulus" {
-    name                = "jamulus-healthchecker"
+    name                = "jamulus"
     load_balancer_type  = "network"
     subnets             = [
       aws_subnet.jamulus_subnet.id
