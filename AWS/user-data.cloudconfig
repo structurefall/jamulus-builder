@@ -4,7 +4,7 @@ repo_update: true
 packages:
  - g++
  - git
- - libjackd2-dev
+ - libjack-jackd2-dev
  - qt5-default
 
 runcmd:
