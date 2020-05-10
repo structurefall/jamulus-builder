@@ -1,3 +1,3 @@
-output "public_ip" {
-  value = aws_eip.load_balancer_eip.public_ip
+output "dns_name" {
+  value = aws_lb.jamulus.dns_name
 }
