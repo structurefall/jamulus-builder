@@ -23,7 +23,11 @@ resource "aws_autoscaling_group" "jamulus" {
   launch_configuration      = aws_launch_configuration.jamulus.name
 
   vpc_zone_identifier       = [
-    aws_subnet.jamulus_subnet_public.id
+    aws_subnet.jamulus_subnet_private.id
+  ]
+
+  target_group_arns = [
+    aws_lb_target_group.jamulus.arn
   ]
 
   tags                      = [
