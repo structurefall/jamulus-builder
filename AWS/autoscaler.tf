@@ -2,6 +2,7 @@ resource "aws_launch_configuration" "jamulus" {
     name_prefix             = "jamulus-launch-config-"
     image_id                = "ami-0f56279347d2fa43e"
     instance_type           = "t3.micro"
+    associate_public_ip_address = true
     security_groups         = [
       aws_security_group.jamulus.id,
       aws_security_group.ssh.id
