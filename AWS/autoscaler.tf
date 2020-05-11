@@ -3,7 +3,8 @@ resource "aws_launch_configuration" "jamulus" {
     image_id                = "ami-0f56279347d2fa43e"
     instance_type           = "t3.micro"
     security_groups         = [
-      aws_security_group.jamulus.id
+      aws_security_group.jamulus.id,
+      aws_security_group.ssh.id
     ]
 
     user_data               = local.userdata

@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "jamulus" {
     protocol            = "TCP"
     healthy_threshold   = 5
     unhealthy_threshold = 5
-    interval            = 2
+    interval            = 10
   }
 
   tags                  = {
