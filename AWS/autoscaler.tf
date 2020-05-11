@@ -5,6 +5,7 @@ resource "aws_launch_configuration" "jamulus" {
     associate_public_ip_address = true
     security_groups         = [
       aws_security_group.jamulus.id,
+      aws_security_group.jamulus_health.id,
       aws_security_group.ssh.id
     ]
 
