@@ -1,9 +1,9 @@
 # Jamulus Builder - AWS Version
 
 ## What does this do?
-This (Terraform)[https://www.terraform.io] code will build a Linux-based
-(Jamulus)[http://llcon.sourceforge.net/] server environment in the Amazon
-public cloud, (AWS)[https://aws.amazon.com].
+This [Terraform](https://www.terraform.io) code will build a Linux-based
+[Jamulus](http://llcon.sourceforge.net/) server environment in the Amazon
+public cloud, [AWS](https://aws.amazon.com).
 
 This should allow you and your friends to collaborate on music remotely in a
 reasonably private, relatively low-latency environment.
@@ -18,7 +18,7 @@ which should be cheaper.
 
 ## Prerequisites
 ### Server
-In order to use this code, you'll need to (install Terraform)[https://learn.hashicorp.com/terraform/getting-started/install.html], as well as the (AWS command line interface)[https://aws.amazon.com/cli/].
+In order to use this code, you'll need to [install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html), as well as the [AWS command line interface](https://aws.amazon.com/cli/).
 
 ### Client
 Each client machine should install Jamulus, and try it out on public servers
@@ -77,7 +77,7 @@ First, create or import an SSH "key pair," either from the AWS EC2 console or
 the command line interface. I do not recommend trying to do that with terraform.
 Make sure you remember the key pair's name.
 
-Second, you'll need your local IP address. I recommend (ifconfig.co)[https://ifconfig.co/]
+Second, you'll need your local IP address. I recommend [ifconfig.co](https://ifconfig.co/)
 for checking this.
 
 Once you have those, create a file in this directory called `terraform.tfvars`.
@@ -99,4 +99,4 @@ decided against it.
 
 Also, be very careful with your AWS key and private key, and rotate it regularly.
 They're significant security targets. If you have reason to believe your AWS
-credentials have been compromised, disable them in the console immediately! 
+credentials have been compromised, disable them in the console immediately!
