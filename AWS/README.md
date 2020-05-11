@@ -62,3 +62,41 @@ The only two components in there with a specific cost are the hosts resulting
 from the autoscale group and the load balancer. Those should cost about $26 per
 month, but egress costs are additional so I would count on spending more. If
 you're nervous about this, consult a professional to look at your infrastructure.
+
+The apply command will output a DNS name for your load balancer. You can use
+that directly in the Jamulus client, or use your own DNS domain to point it at
+something more easily human-readable.
+
+Note that it is likely to take ~5 minutes from the completion of the terraform
+job for a host to actually become available.
+
+## SSH access
+If you want SSH access to your hosts, you'll need to do two things.
+
+First, create or import an SSH "key pair," either from the AWS EC2 console or
+the command line interface. I do not recommend trying to do that with terraform.
+Make sure you remember the key pair's name.
+
+Second, you'll need your local IP address. I recommend (ifconfig.co)[https://ifconfig.co/]
+for checking this.
+
+Once you have those, create a file in this directory called `terraform.tfvars`.
+The contents of the file should look like this:
+```
+keypair = "YOURKEYNAME"
+sships = ["YOUR.IP.ADDRESS"]
+```
+Run `terraform apply` from this directory again (or for the first time,) and all
+future autoscale hosts will allow SSH access from your IP. If you already have a
+host up and running, simply terminate it and a new one will build in a minute.
+
+## Security concerns
+**Do not store secure data on these machines.** Hosts built with this module are
+locked down by security group, but have a public, internet-facing IP address.
+Doing this the best-practices-formal way to avoid that would have meant adding a
+NAT instance, which more than doubles the monthly cost to run this setup, so we
+decided against it.
+
+Also, be very careful with your AWS key and private key, and rotate it regularly.
+They're significant security targets. If you have reason to believe your AWS
+credentials have been compromised, disable them in the console immediately! 
