@@ -23,7 +23,7 @@ In order to use this code, you'll need to [install Terraform](https://learn.hash
 ### Client
 Each client machine should install Jamulus, and try it out on public servers
 first. **Make sure your audio interface is outputting at 48k** or your sound
-may get severely garbled
+may get severely garbled.
 
 ## Usage
 
@@ -97,6 +97,6 @@ Doing this the best-practices-formal way to avoid that would have meant adding a
 NAT instance, which more than doubles the monthly cost to run this setup, so we
 decided against it.
 
-Also, be very careful with your AWS key and private key, and rotate it regularly.
+Also, be very careful with your AWS key and private key, and rotate them regularly.
 They're significant security targets. If you have reason to believe your AWS
 credentials have been compromised, disable them in the console immediately!
