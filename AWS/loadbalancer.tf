@@ -13,6 +13,7 @@ resource "aws_lb_target_group" "jamulus" {
   port                  = 22124
   protocol              = "UDP"
 
+/*
   health_check {
     port                = 22124
     protocol            = "TCP"
@@ -20,6 +21,7 @@ resource "aws_lb_target_group" "jamulus" {
     unhealthy_threshold = 5
     interval            = 10
   }
+*/
 
   tags                  = {
     Application         = "jamulus"
