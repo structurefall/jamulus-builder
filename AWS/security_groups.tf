@@ -36,7 +36,7 @@ resource "aws_security_group" "jamulus_health" {
     to_port     = "22124"
     protocol    = "tcp"
     cidr_blocks = [
-      aws_subnet.jamulus_subnet.cidr_block
+      aws_vpc.jamulus.cidr_block
     ]
   }
 

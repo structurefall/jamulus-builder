@@ -8,6 +8,7 @@ packages:
  - qt5-default
 
 runcmd:
- - [ git, clone, "https://github.com/corrados/jamulus.git" ]
- - [ sh, -c, "cd jamulus; qmake \"CONFIG+=nosound\" Jamulus.pro && make clean && make"]
+ - [ git, clone, "https://github.com/AronVietti/jamulus" ]
+ - [ sh, -c, "cd jamulus; git checkout origin/HealthCheck" ]
+ - [ sh, -c, "cd jamulus; qmake \"CONFIG+=nosound\" Jamulus.pro && make clean && make" ]
  - [ sudo, chrt, 99, ionice, -c1, nice, -n, -20, /jamulus/Jamulus, -s, -n, -p, 22124 ]

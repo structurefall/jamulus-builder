@@ -11,9 +11,8 @@ resource "aws_lb_target_group" "jamulus" {
   target_type           = "instance"
   vpc_id                = aws_vpc.jamulus.id
   port                  = 22124
-  protocol              = "UDP"
+  protocol              = "TCP_UDP"
 
-/*
   health_check {
     port                = 22124
     protocol            = "TCP"
@@ -21,7 +20,6 @@ resource "aws_lb_target_group" "jamulus" {
     unhealthy_threshold = 5
     interval            = 10
   }
-*/
 
   tags                  = {
     Application         = "jamulus"
@@ -31,7 +29,7 @@ resource "aws_lb_target_group" "jamulus" {
 resource "aws_lb_listener" "jamulus_listener" {
   load_balancer_arn     = aws_lb.jamulus.arn
   port                  = 22124
-  protocol              = "UDP"
+  protocol              = "TCP_UDP"
 
   default_action {
     type                = "forward"

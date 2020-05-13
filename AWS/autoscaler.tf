@@ -22,7 +22,7 @@ resource "aws_autoscaling_group" "jamulus" {
   name                      = "jamulus-autoscaler"
   max_size                  = 1
   min_size                  = 1
-  health_check_type         = "EC2"
+  health_check_type         = "ELB"
   launch_configuration      = aws_launch_configuration.jamulus.name
 
   vpc_zone_identifier       = [
