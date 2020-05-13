@@ -1,14 +1,14 @@
 provider "aws" {
-  region           = "us-west-1"
-  profile          = "personal"
+  region           = "{REGION}"
+  profile          = "{PROFILE}"
 }
 
 terraform {
   required_version = ">= 0.12"
   backend "s3" {
-    bucket         = "terraform-jamulus"
-    region         = "us-west-1"
-    profile        = "personal"
+    bucket         = "{BUCKET}"
+    region         = "{REGION}"
+    profile        = "{PROFILE}"
 
     key            = "aws.tfstate"
     dynamodb_table = "terraform-jamulus"
