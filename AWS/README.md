@@ -32,12 +32,29 @@ may get severely garbled.
 ## Usage
 
 You'll need to configure a profile using `aws configure`, and you'll have to
-read their docs on how to do that. The `main.tf` files in this directory as
-well as the "Initializer" directory use a profile called `personal` and the AWS
-`us-west-1` region. Feel free to change those to suit your needs, but make sure
-that they match.
+read their docs on how to do that. If you just configure it with no options,
+your profile will be `default`.
 
-Once you have those configured, change to the Initializer directory and type:
+**If your workstation is a Mac or Linux machine:**
+Make sure you have both the `aws` and `terraform` commands available in your
+path, and from this directory run
+`./build.sh <YOUR PROFILE NAME> <YOUR PREFERRED AWS REGION>`. For example, my
+command looks like this:
+```
+./build.sh personal us-west-1
+```
+
+That will insert your preferred profile name and region into the configuration,
+and will create a Terraform "state" bucket with a unique name based on your
+AWS account ID. It will then build your Jamulus infrastructure.
+
+**If your workstation is a Windows machine, or you want to do this manually:**
+Install and configure the `aws` and `terraform` commands as usual. Edit the
+`main.tf` files in this directory as well as the one in `Initializer`. You'll
+want to replace `{REGION}` and `{PROFILE}` with your chosen AWS region and
+profile.
+
+Then, change to the Initializer directory and type:
 ```
 terraform init && terraform apply
 ```
@@ -45,16 +62,24 @@ That will build the necessary resources for Terraform to manage itself in your
 AWS account correctly- an S3 bucket with state information and a DynamoDB table
 to manage locking.
 
-Once those operations complete, I recommend that you check the AWS console to
-make sure the resources built as expected.
+The apply will produce a bucket name as in its output. Replace `{BUCKET}` in
+_this_ directory's `main.tf` with that value.
 
-After that, from _this_ directory,
+After that, again from this directory,
 type:
 ```
 terraform init && terraform apply
 ```
-That will probably take a while. It will build:
+That will probably take a while. This will build the Jamulus infrastructure.
 
+**Why does that seem needlessly complicated?**
+Terraform doesn't accept variables inside `provider` or `terraform` blocks, so
+in order to keep this generic, it was necessary to script it outside of
+Terraform. There are other workarounds to this, but they all involve writing
+your own code, a process from which I am _graciously_ trying to spare you.
+
+## What does this build?
+Aside from the Terraform state management resources, this will build:
 * A new VPC for your Jamulus resources
 * A subnet, internet gateway, and routes for that VPC
 * A launch template including a startup script to download and build the Jamulus server on autoscaling hosts
