@@ -9,7 +9,7 @@ This should allow you and your friends to collaborate on music remotely in a
 reasonably private, relatively low-latency environment.
 
 Currently, this module builds and installs [AronVietti](https://github.com/AronVietti)'s
-fork of Jamulus, availabe [here](https://github.com/AronVietti/jamulus), which
+fork of Jamulus, available [here](https://github.com/AronVietti/jamulus), which
 includes TCP health checks. Huge thanks to Aron for his help on this!
 
 ## Do I need to know Linux to use this?
