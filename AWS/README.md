@@ -35,7 +35,7 @@ You'll need to configure a profile using `aws configure`, and you'll have to
 read their docs on how to do that. If you just configure it with no options,
 your profile will be `default`.
 
-**If your workstation is a Mac or Linux machine:**
+**If your workstation is a Mac or Linux machine:**  
 Make sure you have both the `aws` and `terraform` commands available in your
 path, and from this directory run
 `./build.sh <YOUR PROFILE NAME> <YOUR PREFERRED AWS REGION>`. For example, my
@@ -48,7 +48,7 @@ That will insert your preferred profile name and region into the configuration,
 and will create a Terraform "state" bucket with a unique name based on your
 AWS account ID. It will then build your Jamulus infrastructure.
 
-**If your workstation is a Windows machine, or you want to do this manually:**
+**If your workstation is a Windows machine, or you want to do this manually:**  
 Install and configure the `aws` and `terraform` commands as usual. Edit the
 `main.tf` files in this directory as well as the one in `Initializer`. You'll
 want to replace `{REGION}` and `{PROFILE}` with your chosen AWS region and
@@ -72,7 +72,7 @@ terraform init && terraform apply
 ```
 That will probably take a while. This will build the Jamulus infrastructure.
 
-**Why does that seem needlessly complicated?**
+**Why does that seem needlessly complicated?**  
 Terraform doesn't accept variables inside `provider` or `terraform` blocks, so
 in order to keep this generic, it was necessary to script it outside of
 Terraform. There are other workarounds to this, but they all involve writing
