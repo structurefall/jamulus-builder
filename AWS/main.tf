@@ -7,7 +7,6 @@ terraform {
   required_version = ">= 0.12"
   backend "s3" {
     bucket         = "{BUCKET}"
-    region         = "{REGION}"
     profile        = "{PROFILE}"
 
     key            = "aws.tfstate"
